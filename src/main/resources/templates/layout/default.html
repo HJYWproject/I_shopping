@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--        layout/default.html : layout의 기본 틀이 되는 html
+            fragments/config.html : css 및 js 링크를 관리하는 head
+            fragments/header.html : body의 머리
+            content : body의 몸통(실질적인 핵심)
+            fragments/footer.html : body의 꼬리                -->
+
+<head>
+    <meta charset = "UTF-8">
+    <title>zzz</title>
+
+    <th:block th:replace = "fragments/config :: configFragment"> </th:block>
+    <!--<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">default</title>-->
+</head>
+
+<body>
+<!-- header 영역 -->
+<th:block class="header" th:replace="fragments/header :: headerFragment"> </th:block>
+
+<!-- sidebar 영역 -->
+<th:block class="sidebar" th:replace="fragments/sidebar :: sidebarFragment"> </th:block>
+
+<!-- content 영역 -->
+<th:block class="content" layout:fragment="content"> </th:block>
+
+<!-- footer 영역 -->
+<th:block class="footer" th:replace="fragments/footer :: footerFragment"> </th:block>
+</body>
+
+</html>
