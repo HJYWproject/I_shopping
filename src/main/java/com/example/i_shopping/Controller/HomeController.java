@@ -1,6 +1,8 @@
 package com.example.i_shopping.Controller;
 
+import com.example.i_shopping.Dto.AccountForm;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -17,7 +19,8 @@ public class HomeController {
     }
 
     @GetMapping("/signup")     // 회원가입 페이지 Controller
-    public String SignupPage(){
+    public String SignupPage(Model model) {
+        model.addAttribute("userForm",new AccountForm());
         return "signup";
     }
 }
