@@ -1,6 +1,6 @@
-package com.example.i_shopping.Dto;
+package com.example.i_shopping.Account.Dto;
 
-import com.example.i_shopping.Domain.Account;
+import com.example.i_shopping.Account.Domain.Account;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.i_shopping.Domain;
+package com.example.i_shopping.Account.Domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
