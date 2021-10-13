@@ -1,19 +1,23 @@
 package com.example.i_shopping.Config;
 
+import com.example.i_shopping.Account.Service.AccountService;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private AccountService accountService;
+
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/js/**","/css/**","/images/**","/font/**","/html/**");
+        web.ignoring().antMatchers("/js/**","/css/**","/images/**","/font/**");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -25,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login")
                 .and()
@@ -36,5 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/login/denied");
     }
+
 
 }
