@@ -19,7 +19,7 @@ public class AccountForm {
     public AccountForm(Long id, String username, String password, String role){
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.password = "{noop}"+password;
         this.role = role;
     }
 
@@ -27,7 +27,7 @@ public class AccountForm {
         return Account.builder()
                 .id(id)
                 .username(username)
-                .password(new BCryptPasswordEncoder().encode(password))     // BCryptPasswordEncoder  == 스프링 시큐리티에서 제공, 비밀번호 암호화
+                .password(password)     // BCryptPasswordEncoder  == 스프링 시큐리티에서 제공, 비밀번호 암호화
                 .role(role)
                 .build();
     }

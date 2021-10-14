@@ -27,7 +27,8 @@ public class Account implements UserDetails {
     public Account(Long id, String username, String password, String role){
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.password = "{noop}"+password;
+
         this.role = role;
     }
 

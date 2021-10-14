@@ -1,6 +1,7 @@
 package com.example.i_shopping.Config;
 
 import com.example.i_shopping.Account.Service.AccountService;
+import com.example.i_shopping.Account.Service.LoginSuccessHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login")
+                .successHandler(new LoginSuccessHandler())
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
