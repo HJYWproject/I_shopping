@@ -28,7 +28,6 @@ public class Account implements UserDetails {
         this.id = id;
         this.username = username;
         this.password = "{noop}"+password;
-
         this.role = role;
     }
 
