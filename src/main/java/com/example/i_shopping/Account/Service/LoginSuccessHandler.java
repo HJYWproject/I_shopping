@@ -15,7 +15,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
                                         HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         HttpSession session = request.getSession();
-        System.out.println("Success : Log In");
+        System.out.println("Success Log In : " + authentication.getName());
         session.setAttribute("userid", authentication.getName());
+        session.setAttribute("role", authentication.getAuthorities());
+        //if authentication.getName() == "[ROLE_USER]"
+        response.sendRedirect("/");
     }
 }

@@ -24,13 +24,13 @@ public class AccountService implements UserDetailsService {
     public void save(AccountForm form) throws UsernameNotFoundException {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         form.setPassword(encoder.encode(form.getPassword()));
-        System.out.println(form.getPassword());
         accountRepository.save(form.toEntity());
     }
 
 
     @Override
     public Account loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(username);
         return accountRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }

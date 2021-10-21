@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
-                .failureUrl("/")
-                //.successHandler(new LoginSuccessHandler())
+                .failureUrl("/login")
+                .successHandler(new LoginSuccessHandler())
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -41,8 +41,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/login/denied");
     }
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
-        auth.userDetailsService(userDetailsService());
-    }
+
 }

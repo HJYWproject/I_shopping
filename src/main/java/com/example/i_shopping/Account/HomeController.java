@@ -13,5 +13,9 @@ public class HomeController {
         return "main";
     }
 
+    @GetMapping("/admin")     // 메인 페이지 Controller
+    public String AdminMainPage(){
+        return "Admin";
+    }
 
 }
