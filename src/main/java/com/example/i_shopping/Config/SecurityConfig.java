@@ -31,16 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login")
-                .successHandler(new LoginSuccessHandler())
+                .failureUrl("/")
+                //.successHandler(new LoginSuccessHandler())
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/logout")
                 .invalidateHttpSession(true)
+                .logoutSuccessUrl("/")
                 .and()
                 .exceptionHandling().accessDeniedPage("/login/denied");
     }
-
-
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
+        auth.userDetailsService(userDetailsService());
+    }
 }
