@@ -12,13 +12,7 @@
 <div layout:fragment = "content">
     <h1>MAIN</h1> <br/>
     <h2>관리자 전용 페이지</h2>
-    ID : <span th:text="${session.userid}"></span> <br>
-    소유 권한 : <span th:text="${session.role}"></span> <br>
-    <span th:text="${session.userid}"></span>
-    <form id="logout" action="/logout" method="POST">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <input type="submit" value="로그아웃"/>
-    </form>
+
 
 </div>
 </body>

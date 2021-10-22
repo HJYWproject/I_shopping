@@ -11,8 +11,7 @@
 
     <div layout:fragment = "content">
         <h1>SIGN UP</h1> <br/>
-        <a href = "/">go to main</a> <br/>
-        <a href = "/login">go to login</a> <br/>
+
 
         <form th:action="@{/signup}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
@@ -24,7 +23,7 @@
             <button type="submit">Join</button>
 
         </form>
-
+            <a href = "/login">go to login</a> <br/>
     </div>
 </body>
 </html>
