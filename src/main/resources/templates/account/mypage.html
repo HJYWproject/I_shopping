@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>mypage</title>
+</head>
+<body>
+    <div layout:fragment = "content">
+        <h1>My Page</h1> <br/>
+        <h2>회원 정보</h2>
+        ID : <span th:text="${session.userid}"></span> <br>
+        소유 권한 : <span th:text="${session.role}"></span> <br>
+        <form id=""></form>
+    </div>
+</body>
+</html>

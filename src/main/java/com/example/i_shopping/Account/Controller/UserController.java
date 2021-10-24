@@ -22,13 +22,13 @@ public class UserController {
 
     @GetMapping("/login")     // 로그인 페이지 Controller
     public String LoginPage(){
-        return "login";
+        return "account/login";
     }
 
     @GetMapping("/signup")     // 회원가입 페이지 Controller
     public String SignupPage(Model model) {
         model.addAttribute("userForm",new AccountForm());
-        return "signup";
+        return "account/signup";
     }
 
     @PostMapping("/signup")
