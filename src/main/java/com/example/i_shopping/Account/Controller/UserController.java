@@ -30,6 +30,11 @@ public class UserController {
         model.addAttribute("userForm",new AccountForm());
         return "account/signup";
     }
+    @GetMapping("/usercheck")
+    public String UserCheckpage(){
+        return "account/usercheck";
+    }
+
 
     @PostMapping("/signup")
     public String createUser(AccountForm form) throws Exception {
@@ -49,5 +54,9 @@ public class UserController {
         return "redirect:/";
     }
 
+    @PostMapping("/usercheck")
+    public String UserCheck(AccountForm form) throws Exception{
 
+        return "";
+    }
 }
