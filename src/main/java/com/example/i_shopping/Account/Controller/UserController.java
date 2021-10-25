@@ -4,6 +4,7 @@ import com.example.i_shopping.Account.Dto.AccountForm;
 import com.example.i_shopping.Account.Service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -55,8 +57,15 @@ public class UserController {
     }
 
     @PostMapping("/usercheck")
-    public String UserCheck(AccountForm form) throws Exception{
+    public String UserCheck(HttpServletRequest request) throws Exception{
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        HttpSession session = request.getSession();
+        String usercheck = encoder.encode(session.getAttribute("userid").toString());
 
-        return "";
+        System.out.println("??"+usercheck);
+        System.out.println("!!"+accountService.loadUserByUsername(usercheck).getPassword());
+        if(encoder.matches(usercheck, accountService.loadUserByUsername(usercheck).getPassword()))  //비밀번호 비교
+            System.out.println("ㅋㅋ");
+        return "account/mypage";
     }
 }
