@@ -5,6 +5,7 @@ import com.example.i_shopping.Account.Service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.task.DelegatingSecurityContextAsyncTaskExecutor;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,15 +58,17 @@ public class UserController {
     }
 
     @PostMapping("/usercheck")
-    public String UserCheck(HttpServletRequest request) throws Exception{
+    public String UserCheck(HttpServletRequest request){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         HttpSession session = request.getSession();
-        String usercheck = encoder.encode(session.getAttribute("userid").toString());
-
-        System.out.println("??"+usercheck);
-        System.out.println("!!"+accountService.loadUserByUsername(usercheck).getPassword());
-        if(encoder.matches(usercheck, accountService.loadUserByUsername(usercheck).getPassword()))  //비밀번호 비교
-            System.out.println("ㅋㅋ");
-        return "account/mypage";
+        String pwd = request.getParameter("password");      //입력한 비밀번호 1
+        String encoded = accountService.loadUserByUsername(session.getAttribute("userid").toString()).getPassword().replace("{bcrypt}","");         //로그인 되어있는 계정의 비밀번호 가져오기
+        if(encoder.matches(pwd, encoded)) { //비밀번호 비교 matches
+            return "account/mypage";
+        }
+        else{
+            System.out.println("비밀번호 다름");
+            return "account/usercheck";
+        }
     }
 }
