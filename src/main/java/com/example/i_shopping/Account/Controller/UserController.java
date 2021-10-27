@@ -1,6 +1,7 @@
 package com.example.i_shopping.Account.Controller;
 
 import com.example.i_shopping.Account.Dto.AccountForm;
+import com.example.i_shopping.Account.Repository.AccountRepository;
 import com.example.i_shopping.Account.Service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final AccountService accountService;
+    private final AccountRepository accountRepository;
 
     @GetMapping("/login")     // 로그인 페이지 Controller
     public String LoginPage(){
@@ -83,10 +85,12 @@ public class UserController {
         String encoded = accountService.loadUserByUsername(session.getAttribute("userid").toString()).getPassword().replace("{bcrypt}","");         //로그인 되어있는 계정의 비밀번호 가져오기
         if(encoder.matches(pwd, encoded)) { //비밀번호 비교 matches
 
+
+            //여기에 회원 탈퇴 메소드
+            accountService.deleteUser(session.getAttribute("userid").toString());
+
             // 로그아웃 메소드
             new SecurityContextLogoutHandler().logout(request,response, SecurityContextHolder.getContext().getAuthentication());
-            //여기에 회원 탈퇴 메소드
-
             return "redirect:/";
         }
         else{
