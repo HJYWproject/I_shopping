@@ -15,7 +15,6 @@
 
         <form th:action="@{/signup}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-            <form th:action="@{/signup}" method="post">
             username : <input type = "text" name="username" placeholder="아이디 입력" required><br>
             username : <input type = "password" name="password" placeholder="비밀번호 입력" required> <br>
             <input type="radio" name="role" value="ROLE_ADMIN,ROLE_USER"> admin

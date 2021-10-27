@@ -14,9 +14,8 @@
         <h2>회원 정보</h2>
         ID : <span th:text="${session.userid}"></span> <br>
         소유 권한 : <span th:text="${session.role}"></span> <br>
-        <form id=""></form>
-        1. 회원 탈퇴
-        2. 비밀번호 변경
+                    <button type="button" onclick="location.href='delete_user'">회원 탈퇴</button>
+        <button type="button" onclick="location.href='delete_user'">회원 탈퇴</button>
 
     </div>
 </body>

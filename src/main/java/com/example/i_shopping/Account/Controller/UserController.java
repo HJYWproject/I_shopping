@@ -5,7 +5,6 @@ import com.example.i_shopping.Account.Service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.task.DelegatingSecurityContextAsyncTaskExecutor;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +37,10 @@ public class UserController {
         return "account/usercheck";
     }
 
+    @GetMapping("/delete_user")
+    public String DeleteUserGet(){
+        return "account/delete_user";
+    }
 
     @PostMapping("/signup")
     public String createUser(AccountForm form) throws Exception {
@@ -69,6 +72,26 @@ public class UserController {
         else{
             System.out.println("비밀번호 다름");
             return "account/usercheck";
+        }
+    }
+
+    @PostMapping("/delete_user")
+    public String DeleteUserPost(HttpServletRequest request,HttpServletResponse response){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        HttpSession session = request.getSession();
+        String pwd = request.getParameter("password");      //입력한 비밀번호 1
+        String encoded = accountService.loadUserByUsername(session.getAttribute("userid").toString()).getPassword().replace("{bcrypt}","");         //로그인 되어있는 계정의 비밀번호 가져오기
+        if(encoder.matches(pwd, encoded)) { //비밀번호 비교 matches
+
+            // 로그아웃 메소드
+            new SecurityContextLogoutHandler().logout(request,response, SecurityContextHolder.getContext().getAuthentication());
+            //여기에 회원 탈퇴 메소드
+
+            return "redirect:/";
+        }
+        else{
+            System.out.println("비밀번호 다름");
+            return "account/delete_user";
         }
     }
 }
