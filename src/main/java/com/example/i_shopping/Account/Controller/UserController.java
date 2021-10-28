@@ -44,6 +44,11 @@ public class UserController {
         return "account/delete_user";
     }
 
+    @GetMapping("/change_pwd")
+    public String ChangePassword(){
+        return "account/change_pwd";
+    }
+
     @PostMapping("/signup")
     public String createUser(AccountForm form) throws Exception {
         try {
@@ -98,4 +103,10 @@ public class UserController {
             return "account/delete_user";
         }
     }
+
+    @PostMapping("/change_pwd")
+    public String ChangePwd(){
+        return "redirect:/";
+    }
+
 }

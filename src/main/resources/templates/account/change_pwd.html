@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment = "content">
+
+    <h1>Change Password</h1> <br/>
+    <form action="/change_pwd" method="POST" enctype = "application/x-www-form-urlencoded">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <h4>비밀번호 변경을 위해 현재 비밀번호 입력</h4>
+        현재 password : <input type="password" th:name="password1"> <br>
+
+        <h4>바꿀 비밀번호 입력</h4>
+        바꿀 password : <input type="password" th:name="password2"> <br>
+        <h4>바꿀 비밀번호 확인</h4>
+        password 확인 : <input type="password" th:name="password3"> <br>
+
+        <button type="submit">submit</button>
+    </form>
+
+</div>
+</body>
+</html>
