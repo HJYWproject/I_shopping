@@ -36,8 +36,9 @@ public class AccountService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
-    public void deleteUser(String username) throws UsernameNotFoundException {
-        Optional<Account> account = accountRepository.findByUsername(username);
-        System.out.println(account);
+    public void deleteUser(String username) throws NullPointerException {
+        Long memnum = accountRepository.findByUsername(username).get().getId();
+        System.out.println(memnum);
+        accountRepository.deleteById(memnum);
     }
 }
