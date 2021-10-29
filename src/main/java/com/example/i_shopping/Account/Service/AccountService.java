@@ -28,7 +28,6 @@ public class AccountService implements UserDetailsService {
         accountRepository.save(form.toEntity());
     }
 
-
     @Override
     public Account loadUserByUsername(String username) throws UsernameNotFoundException {
         //System.out.println(username);
@@ -40,5 +39,13 @@ public class AccountService implements UserDetailsService {
         Long memnum = accountRepository.findByUsername(username).get().getId();
         System.out.println(memnum);
         accountRepository.deleteById(memnum);
+    }
+
+    public void changepassword(String password) throws UsernameNotFoundException {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        String new_password = encoder.encode(password);
+
+        form.setPassword(encoder.encode(form.getPassword()));
+        accountRepository.save(form.toEntity());
     }
 }
