@@ -41,11 +41,12 @@ public class AccountService implements UserDetailsService {
         accountRepository.deleteById(memnum);
     }
 
-    public void changepassword(String password) throws UsernameNotFoundException {
+    public void changepassword(String username, String password) throws UsernameNotFoundException {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         String new_password = encoder.encode(password);
-
-        form.setPassword(encoder.encode(form.getPassword()));
-        accountRepository.save(form.toEntity());
+        String new_encoded_password = "{bcrypt}"+new_password;
+        Account account = loadUserByUsername(username);
+        account.setPassword(new_encoded_password);
+        accountRepository.save(account);
     }
 }

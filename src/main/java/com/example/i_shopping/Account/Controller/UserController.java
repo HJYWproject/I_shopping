@@ -103,7 +103,7 @@ public class UserController {
     }
 
     @PostMapping("/change_pwd")
-    public String ChangePwd(HttpServletRequest request) {
+    public String ChangePwd(HttpServletRequest request, AccountForm form) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         HttpSession session = request.getSession();
         String old_pwd = request.getParameter("password1");      //입력한 비밀번호 1
@@ -112,8 +112,9 @@ public class UserController {
         String encoded = accountService.loadUserByUsername(session.getAttribute("userid").toString()).getPassword().replace("{bcrypt}", "");         //로그인 되어있는 계정의 비밀번호 가져오기
         if (encoder.matches(old_pwd, encoded)) { //비밀번호 비교 matches
             if (Objects.equals(new_pwd, new_pwd_check)) {
-                accountService.changepassword(new_pwd);
-                return "/";
+                accountService.changepassword(session.getAttribute("userid").toString(), new_pwd);
+                System.out.println("비밀번호 변경 완료");
+                return "redirect:/";
             } else {
                 System.out.println("비밀번호 확인 일치하지 않음");
                 return "account/change_pwd";
@@ -123,7 +124,5 @@ public class UserController {
                 System.out.println("현재 비밀번호 다름");
                 return "account/change_pwd";
             }
-            return "redirect:/";
         }
-
     }
