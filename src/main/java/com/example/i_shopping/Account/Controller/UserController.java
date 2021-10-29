@@ -1,7 +1,6 @@
 package com.example.i_shopping.Account.Controller;
 
 import com.example.i_shopping.Account.Dto.AccountForm;
-import com.example.i_shopping.Account.Repository.AccountRepository;
 import com.example.i_shopping.Account.Service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +22,6 @@ import java.util.Objects;
 public class UserController {
 
     private final AccountService accountService;
-    private final AccountRepository accountRepository;
 
     @GetMapping("/login")     // 로그인 페이지 Controller
     public String LoginPage() {
@@ -103,7 +101,7 @@ public class UserController {
     }
 
     @PostMapping("/change_pwd")
-    public String ChangePwd(HttpServletRequest request, AccountForm form) {
+    public String ChangePwd(HttpServletRequest request) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         HttpSession session = request.getSession();
         String old_pwd = request.getParameter("password1");      //입력한 비밀번호 1
