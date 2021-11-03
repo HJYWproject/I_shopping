@@ -3,13 +3,46 @@
       xmlns:th="http://www.thymeleaf.org">
 <th:block  th:fragment="sidebarFragment">
   <header class="sidebar">
-    <div style="width:100%;height:100px; background:#0ff1ce;">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <div class = "menu">
       <link rel="stylesheet" href="/../../static/css/config.css">
       sidebar area
 
-      <span th:if="${session.userid}">
-        <a href = "/posthome">게시판 가기</a> <br/>
-      </span>
+      <!--<span th:if="${session.userid}">-->
+        <!--<a href = "/posthome">게시판 가기</a> <br/>-->
+        <nav>
+          <label for = "expand-menu"><div>메뉴</div></label>
+          <input type="checkbox" id="expand-menu" name="expand-menu">
+          <ul>
+            <li><a href = "/posthome">게시판</a>
+              <ul>
+                <li><a href = "/freepostpage">자유게시판</a></li>
+                <li><a href = "/faqpostpage">FAQ 자주하는 질문</a></li>
+                <li><a href = "/questionpostpage">1:1 문의</a></li>
+              </ul>
+            </li>
+            <li><a href = "/#">메뉴2</a>
+             <ul>
+              <li><a href = "/#">요소2-1</a></li>
+              <li><a href = "/#">요소2-2</a></li>
+             </ul>
+            </li>
+            <li><a href = "/#">메뉴3</a>
+             <ul>
+               <li><a href = "/#">요소3-1</a></li>
+               <li><a href = "/#">요소3-2</a></li>
+             </ul>
+            </li>
+            <li><a href = "/#">메뉴4</a>
+              <ul>
+                <li><a href = "/#">요소4-1</a></li>
+                <li><a href = "/#">요소4-2</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      <!--</span>-->
 
       <span th:unless="${session.userid}">
       </span>
