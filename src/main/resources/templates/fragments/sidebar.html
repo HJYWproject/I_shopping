@@ -4,15 +4,15 @@
 <th:block  th:fragment="sidebarFragment">
   <header class="sidebar">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <div class = "menu">
+  </header>
+  <body>
+    <div>
       <link rel="stylesheet" href="/../../static/css/config.css">
       sidebar area
 
       <!--<span th:if="${session.userid}">-->
         <!--<a href = "/posthome">게시판 가기</a> <br/>-->
-        <nav>
-          <label for = "expand-menu"><div>메뉴</div></label>
-          <input type="checkbox" id="expand-menu" name="expand-menu">
+        <div class = "menu">
           <ul>
             <li><a href = "/posthome">게시판</a>
               <ul>
@@ -22,16 +22,16 @@
               </ul>
             </li>
             <li><a href = "/#">메뉴2</a>
-             <ul>
-              <li><a href = "/#">요소2-1</a></li>
-              <li><a href = "/#">요소2-2</a></li>
-             </ul>
+              <ul>
+                <li><a href = "/#">요소2-1</a></li>
+                <li><a href = "/#">요소2-2</a></li>
+              </ul>
             </li>
             <li><a href = "/#">메뉴3</a>
-             <ul>
-               <li><a href = "/#">요소3-1</a></li>
-               <li><a href = "/#">요소3-2</a></li>
-             </ul>
+              <ul>
+                <li><a href = "/#">요소3-1</a></li>
+                <li><a href = "/#">요소3-2</a></li>
+              </ul>
             </li>
             <li><a href = "/#">메뉴4</a>
               <ul>
@@ -40,16 +40,13 @@
               </ul>
             </li>
           </ul>
-        </nav>
 
-      <!--</span>-->
+      <!--</span>
 
       <span th:unless="${session.userid}">
-      </span>
+      </span>-->
     </div>
-  </header>
-
-  <body>
+    </div>
 
   </body>
 </th:block>

@@ -19,16 +19,18 @@
 
 <body>
 <!-- header 영역 -->
-<th:block class="header" th:replace="fragments/header :: headerFragment"> </th:block>
 
-<!-- sidebar 영역 -->
-<th:block class="sidebar" th:replace="fragments/sidebar :: sidebarFragment"> </th:block>
+    <th:block class="header" th:replace="fragments/header :: headerFragment"> </th:block>
+<div class="container">
+    <!-- sidebar 영역 -->
+    <th:block class="sidebar" th:replace="fragments/sidebar :: sidebarFragment"> </th:block>
 
-<!-- content 영역 -->
-<th:block class="content" layout:fragment="content"> </th:block>
+    <!-- content 영역 -->
+    <th:block class="content" layout:fragment="content"> </th:block>
+</div>
+    <!-- footer 영역 -->
+    <th:block class="footer" th:replace="fragments/footer :: footerFragment"> </th:block>
 
-<!-- footer 영역 -->
-<th:block class="footer" th:replace="fragments/footer :: footerFragment"> </th:block>
 </body>
 
 </html>
