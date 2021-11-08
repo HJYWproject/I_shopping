@@ -3,9 +3,14 @@
       xmlns:th="http://www.thymeleaf.org">
 
   <header th:fragment="headerFragment">
-    <div class = header>
-      <button type="button" onclick="location.href='/'">메인페이지 가는 이미지 넣을 곳</button>
-      header area <br>
+
+      <div class = header>
+
+        <a href="/">
+            <img src="img/main_page.PNG" width="150px" height="80px" alt="go to main"/>
+        </a>
+          header area
+
 
 
       <span th:if="${session.userid}">
