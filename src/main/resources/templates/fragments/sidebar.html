@@ -2,17 +2,18 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org">
 <th:block  th:fragment="sidebarFragment">
-  <header class="sidebar">
+  <header >
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </header>
   <body>
     <div>
       <link rel="stylesheet" href="/../../static/css/config.css">
-      sidebar area
+
 
       <!--<span th:if="${session.userid}">-->
         <!--<a href = "/posthome">게시판 가기</a> <br/>-->
-        <div class = "menu">
+        <div class = "sidebar">
+          sidebar area
           <ul>
             <li><a href = "/posthome">게시판</a>
               <ul>
