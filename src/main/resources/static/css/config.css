@@ -4,7 +4,7 @@
     display:grid;
     align-content: baseline;
     gap:32px;
-    border: 1px solid #bcbcbc;
+    border: 2px solid #bcbcbc;
 }
 .container{
     display:flex;
@@ -12,21 +12,27 @@
 }
 .header {
     padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #bcbcbc;
+    margin-bottom: 40px;
+    border: 2px solid #bcbcbc;
+    width:auto;
+    height:100px;
+    background:#f6b3b3;
+    border-radius: 20px;
 }
 
 .content {
-    width: auto;
+    width: 100%;
+    /*display:flex;*/
     display:flex;
     flex-direction: column;
     padding: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     margin-left : 40px;
-    /*float: left;
-    border: 1px solid #bcbcbc;*/
+    /*float: right;*/
+    /*border: 1px solid #bcbcbc;*/
     border-radius: 20px;
     background : #bcbcbc;
+    align-items:center;
 }
 /*.sidebar {
     width: auto;
@@ -43,20 +49,26 @@
     border-radius:0 16px 16px 0;
 }*/
 .sidebar {
-    display: block;
+    display: flex;
     overflow: hidden;
-    width: 200px;
+    width: 250px;
+    margin-bottom: 40px;
     background-color: #0ff1ce;
-    color: #fff;
+    color: #000000;
     transition: all 0.5s ease;
     border-radius: 20px;
     padding: 10px;
     box-sizing: border-box;
-}
+    border: 2px solid #bcbcbc;
 
+}
 
 .footer {
     clear: both;
-    padding: 20px;
-    border: 1px solid #bcbcbc;
+    padding: 40px;
+    border: 2px solid #bcbcbc;
+    width:auto;
+    height:100px;
+    background:#f8f895;
+    border-radius: 20px;
 }
