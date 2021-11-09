@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>mypage</title>
+</head>
+<body>
+    <span th:if="${session.userid}">
+        <div layout:fragment = "content">
+            <h1>My Market Bascket</h1> <br/>
+            <h2>장바구니</h2>
+
+            <!-- 장바구니에 담기 한 제품들 db에서 가져오기, -->
+            <!-- 가져온 데이터 테이블 표로 출력-->
+            <!-- 체크 박스로 결제 체크 해야 할 것.-->
+
+            <button type="button" onclick="location.href='delete_user'">결제</button>
+
+        </div>
+    </span>
+    <span th:unless="${session.userid}">
+
+      </span>
+</body>
+</html>
