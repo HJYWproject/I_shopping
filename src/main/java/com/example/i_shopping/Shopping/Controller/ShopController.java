@@ -6,4 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ShopController {
 
+    @GetMapping("/shopping_main")
+    public String basket_page(){
+        return "/shop/shopping_main";
+    }
 }
