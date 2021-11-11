@@ -22,13 +22,15 @@ public class Account implements UserDetails {
     private String username;
     private String password;
     private String role;
+    private String credit_check;
 
     @Builder
-    public Account(Long id, String username, String password, String role){
+    public Account(Long id, String username, String password, String role, String credit_check){
         this.id = id;
         this.username = username;
         this.password = "{bcrypt}"+password;
         this.role = role;
+        this.credit_check = credit_check;
     }
 
     @Override
