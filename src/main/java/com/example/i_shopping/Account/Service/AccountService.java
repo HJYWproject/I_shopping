@@ -28,7 +28,7 @@ public class AccountService implements UserDetailsService {
     }
 
     @Override
-    public Account loadUserByUsername(String username) throws UsernameNotFoundException {
+    public Account loadUserByUsername(String username) throws UsernameNotFoundException,NullPointerException {
         //System.out.println(username);
         return accountRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));

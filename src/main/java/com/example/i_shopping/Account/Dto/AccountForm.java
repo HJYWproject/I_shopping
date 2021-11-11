@@ -13,13 +13,16 @@ public class AccountForm {
     private String username;
     private String password;
     private String role;
+    private String credit_check;
+    private String phone_check;
 
     @Builder
-    public AccountForm(Long id, String username, String password, String role){
+    public AccountForm(Long id, String username, String password, String role, String credit_check){
         this.id = id;
         this.username = username;
-        this.password = "{noop}"+password;
+        this.password = "{bcrypt}"+password;
         this.role = role;
+        this.credit_check = credit_check;
     }
 
     public Account toEntity(){
@@ -28,6 +31,7 @@ public class AccountForm {
                 .username(username)
                 .password(password)     // BCryptPasswordEncoder  == 스프링 시큐리티에서 제공, 비밀번호 암호화
                 .role(role)
+                .credit_check(credit_check)
                 .build();
     }
 

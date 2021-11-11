@@ -52,6 +52,7 @@ public class UserController {
     @PostMapping("/signup")
     public String createUser(AccountForm form) throws Exception {
         try {
+            form.setCredit_check(null);
             accountService.save(form);
             System.out.println("회원가입 완료");
             return "redirect:/login";        // 성공 시, 로그인 페이지로

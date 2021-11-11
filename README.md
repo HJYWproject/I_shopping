@@ -1,7 +1,6 @@
 readme.md
 
-+ I_Shopping
-
++ I_Shopping : 누구든지 팔 수 있고, 누구든지 살 수 있는
 ***
 
 

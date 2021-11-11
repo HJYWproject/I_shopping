@@ -32,7 +32,6 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     implementation 'org.javassist:javassist:3.28.0-GA'
     implementation 'mysql:mysql-connector-java'
-    implementation 'org.springframework.boot:spring-boot-devtools'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
