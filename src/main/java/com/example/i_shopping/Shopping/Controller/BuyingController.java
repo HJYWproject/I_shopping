@@ -8,16 +8,16 @@ public class BuyingController {
 
     @GetMapping("/shopping_buy_main")
     public String buy_mainage(){
-        return "/shop/buying/shopping_sell_main";
+        return "/shop/buying/shopping_buy_main";
     }
 
     @GetMapping("/shopping_buy_woman")
     public String buy_woman_page(){
-        return "/shop/buying/shopping_sell_woman";
+        return "/shop/buying/shopping_buy_woman";
     }
 
     @GetMapping("/shopping_buy_man")
     public String buy_man_page(){
-        return "/shop/buying/shopping_sell_man";
+        return "/shop/buying/shopping_buy_man";
     }
 }
