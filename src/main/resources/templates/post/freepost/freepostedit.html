@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        lang="en"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default}">
+<head>
+  <meta charset="UTF-8">
+  <title>upload_post</title>
+</head>
+<body>
+<div layout:fragment = "content">
+  <form action="/freepostpage/edit" method ="POST">
+    title :  <input type = "text" th:name="title"> <br>
+    content : <input type="text" th:name="content"/> <br>
+    userid : <input type = "text" th:name="userid"> <br><br>
+    <button type = "submit">submit</button>
+  </form>
+</div>
+</body>
+</html>
