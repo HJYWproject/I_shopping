@@ -17,7 +17,6 @@ public class BuyingController {
     }
 
     @GetMapping("/shopping_buy_man")
-    public String buy_man_page(){
-        return "/shop/buying/shopping_buy_man";
+    public String buy_man_page(){return "/shop/buying/shopping_buy_man";
     }
 }

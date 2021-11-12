@@ -1,6 +1,5 @@
 package com.example.i_shopping.Shopping.Controller;
 
-import com.example.i_shopping.Account.Dto.AccountForm;
 import com.example.i_shopping.Shopping.Dto.SellingForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
