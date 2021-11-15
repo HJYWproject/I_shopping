@@ -27,7 +27,7 @@ public class FreePostController {
     public String mainpost(){ return "/post/posthome";
     }
 
-    @GetMapping("/freepostpage/edit")
+    @GetMapping("/freepostpage/freepostedit")
     public String freepost_edit(){ return "/post/freepost/freepostedit";
     }
 
@@ -74,14 +74,14 @@ public class FreePostController {
         return "/post/freepost/freepostpage";
     }
 
-    @CrossOrigin(origins="*")
-    @PostMapping("/freepostpage/edit")
+    //@CrossOrigin(origins="*")
+    @PostMapping("/freepostpage/freepostedit")
     public String freepost_edit_post(FreePostForm freepostForm){
         System.out.println("???");
+        System.out.println(freepostForm.getId());
+        freepostService.save(freepostForm);
         System.out.println(freepostForm.getContent());
-        //freepostService.save(freepostForm);
-        System.out.println(freepostForm.getContent());
-        return "redirect:/freepostpage";
+        return "post/freepost/freepostedit";
     }
 
     @PutMapping("/freepostpage/update/{id}")
