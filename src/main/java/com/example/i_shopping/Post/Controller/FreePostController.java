@@ -71,17 +71,16 @@ public class FreePostController {
     public String freepost(Model model){
         List<FreePostForm> freepostList = freepostService.getPostList();
         model.addAttribute("freepostList", freepostList);
+        System.out.println(model);
         return "/post/freepost/freepostpage";
     }
 
     //@CrossOrigin(origins="*")
     @PostMapping("/freepostpage/freepostedit")
     public String freepost_edit_post(FreePostForm freepostForm){
-        System.out.println("???");
-        System.out.println(freepostForm.getId());
+        System.out.println("게시글 저장 완료");
         freepostService.save(freepostForm);
-        System.out.println(freepostForm.getContent());
-        return "post/freepost/freepostedit";
+        return "redirect:/freepostpage";
     }
 
     @PutMapping("/freepostpage/update/{id}")
