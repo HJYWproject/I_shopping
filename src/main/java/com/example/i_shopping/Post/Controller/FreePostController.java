@@ -72,7 +72,7 @@ public class FreePostController {
         List<FreePostForm> freepostList = freepostService.getPostList();
         model.addAttribute("freepostList", freepostList);
         System.out.println(model);
-        return "/post/freepost/freepostpage";
+        return "freepostmain";
     }
 
     //@CrossOrigin(origins="*")
