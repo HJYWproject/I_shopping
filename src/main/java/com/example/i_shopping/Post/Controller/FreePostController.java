@@ -1,7 +1,9 @@
 package com.example.i_shopping.Post.Controller;
 
+import com.example.i_shopping.Post.Domain.CommentEntity;
 import com.example.i_shopping.Post.Domain.FreePostEntity;
 import com.example.i_shopping.Post.Dto.FreePostForm;
+import com.example.i_shopping.Post.Repository.CommentRepository;
 import com.example.i_shopping.Post.Repository.FreePostRepository;
 import com.example.i_shopping.Post.Service.FreePostService;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,11 @@ public class FreePostController {
     String user;
     private final FreePostService freepostService;
     private final FreePostRepository freepostRepository;
-    public FreePostController(FreePostService freepostService, FreePostRepository freepostRepository) {
+    private final CommentRepository commentRepository;
+    public FreePostController(FreePostService freepostService, FreePostRepository freepostRepository, CommentRepository commentRepository) {
         this.freepostService = freepostService;
         this.freepostRepository = freepostRepository;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping("/posthome")
@@ -36,10 +40,12 @@ public class FreePostController {
         FreePostForm freepostForm = freepostService.getPost(id);
 
         FreePostEntity postEntity = freepostRepository.findById(id).get();
-        //List<CommentEntity> commentEntityList= commentRepository.findCommentsByPostEntity(postEntity);
+        FreePostEntity freepostEntity = freepostRepository.findById(id).get();
+        List<CommentEntity> commentEntityList= commentRepository.findCommentsByFreepostEntity(freepostEntity);
+        model.addAttribute("commentList", commentEntityList);
+
 
         model.addAttribute("postRead", freepostForm);
-        //model.addAttribute("commentList",commentEntityList);
         user = freepostForm.getUserid();
         return "/post/freepost/freepostread";
     }
@@ -72,7 +78,7 @@ public class FreePostController {
         List<FreePostForm> freepostList = freepostService.getPostList();
         model.addAttribute("freepostList", freepostList);
         System.out.println(model);
-        return "freepostmain";
+        return "/post/freepost/freepostpage";
     }
 
     //@CrossOrigin(origins="*")

@@ -25,8 +25,41 @@
     </div>
 
     <div>
-        댓글
+        댓글 목록
+        <table border="1">
+            <th>id</th>
+            <th>title</th>
+            <th>comment</th>
+            <th>userid</th>
+            <tr th:each = "comment : ${commentList}">
+                <td th:text= "${comment.id}"></td>
+                <td th:text= "${comment.title}"></td>
+                <td th:text= "${comment.content}"></td>
+                <td th:text= "${comment.userid}"></td>
+                <div th:if = "${comment.getUserid().toString().equals(session.userid.toString())}">
+                    <td>
+                        <form th:action="@{'/freepostpage/read/' + ${postRead.id} + '/comment/delete/' + ${comment.id}}" th:method="delete">
+                            <button th:type="submit" >삭제</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{'/freepostpage/read/' + ${postRead.id} + '/comment/update/' + ${comment.id}}" th:method="PUT">
+                            title : <input type="text" th:name="title" th:value="${comment.title}"> <br>
+                            userid :  <input type="text" th:name="userid" th:value="${comment.userid}"><br>
+                            content : <input type="text" th:name="content" th:value="${comment.content}"/><br>
+                            <button  type = "submit">게시글 수정</button>
+                        </form>
+                    </td>
+                </div>
+            </tr>
+        </table>
     </div>
+    <form th:action="@{'/freepostpage/read/' + ${postRead.id} + '/comment/create'}" method="POST">
+        title :  <input type = "text" th:name="title"> <br>
+        comment :  <input type = "text" th:name="content"> <br>
+        userid :  <input type = "text" th:name="userid"> <br>
+        <button type = "submit">댓글 작성하기</button> <br>
+    </form>
 </div>
 </body>
 </html>
