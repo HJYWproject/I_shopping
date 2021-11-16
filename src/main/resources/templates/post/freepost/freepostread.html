@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        lang="en"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>upload_post</title>
+</head>
+<body>
+<div layout:fragment = "content">
+
+    <input type="hidden" name="_method" value="put"/>
+    title : <span th:text="${postRead.title}"></span><br>
+    userid :  <span th:text="${postRead.userid}"></span><br>
+    content : <span th:text="${postRead.content}"></span><br>
+    <div th:if = "${session.userid} == ${postRead.userid}">
+        <form th:action="@{'/freepostpage/update/' + ${postRead.id}}" method="get">
+            <button type = "submit">수정</button> <br>
+        </form>
+        <form th:action="@{'/freepostpage/delete/' + ${postRead.id}}" method="GET">
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+
+    <div>
+        댓글
+    </div>
+</div>
+</body>
+</html>

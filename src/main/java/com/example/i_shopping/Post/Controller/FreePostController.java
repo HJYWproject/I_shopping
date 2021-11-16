@@ -41,18 +41,18 @@ public class FreePostController {
         model.addAttribute("postRead", freepostForm);
         //model.addAttribute("commentList",commentEntityList);
         user = freepostForm.getUserid();
-        return "/post/freepost/freepostpage/read";
+        return "/post/freepost/freepostread";
     }
 
     @GetMapping("/freepostpage/delete/{id}")  //삭제
     public String PostDelete(@PathVariable("id") long id, HttpServletRequest request) throws Exception{
         if(!user.equals(request.getSession().getAttribute("userid"))){
             System.out.println("아이디가 다름");
-            return "redirect:/post/freepost/freepostpage";
+            return "redirect:/freepostpage";
         }
         else{
             freepostService.postDelete(id);
-            return "redirect:/post/freepost/freepostpage";
+            return "redirect:/freepostpage";
         }
     }
 
@@ -64,7 +64,7 @@ public class FreePostController {
         } else {
             FreePostForm freepostForm = freepostService.getPost(id);
             model.addAttribute("postList", freepostForm);
-            return "/post/freepost/freepostpage/update";
+            return "/post/freepost/freepostupdate";
         }
     }
     @GetMapping("/freepostpage")
@@ -83,11 +83,11 @@ public class FreePostController {
         return "redirect:/freepostpage";
     }
 
-    @PutMapping("/freepostpage/update/{id}")
+    @PostMapping("/freepostpage/update/{id}")
     public String PostUpdate(@PathVariable("id") long id, FreePostForm freepostForm) {
         freepostForm.setId(id);
         freepostService.save(freepostForm);
-        return "redirect:/post/freepost/freepostpage";
+        return "redirect:/freepostpage/read/{id}";
     }
 
 }
