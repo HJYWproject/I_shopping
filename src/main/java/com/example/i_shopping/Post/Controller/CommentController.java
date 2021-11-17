@@ -35,7 +35,7 @@ public class CommentController {
     @PostMapping("/freepostpage/read/{id}/comment/create")
     public String createComment(@PathVariable Long id, CommentForm commentForm){
         Optional<FreePostEntity> postItem = freepostRepository.findById(id);
-
+        System.out.println(commentForm.getId());
         commentForm.setFreepostEntity(postItem.get());
         //commentRepository.save(commentForm.toEntity());
         commentService.save(commentForm);
