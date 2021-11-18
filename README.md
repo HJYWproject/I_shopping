@@ -12,3 +12,4 @@ readme.md
 + V0.0.6(2021/11/03) : +page_form(free,1:1,faq), fixing sidebar css...
 + V0.0.7(2021/11/08) : css error fixed, +main_page image
 + V0.0.8(2021/11/16) : +free posting page create, read, update, delete  + free post comment
++ V0.0.8(2021/11/18) :
