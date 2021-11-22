@@ -11,8 +11,27 @@
     <h1>FAQ</h1> <br/>
     <h2>FAQ, 자주 하는 질문</h2>
 
+    <span th:text="${faqpostList}"></span><br>
+    <table border="1">
+        <th>id</th>
+        <th>title</th>
+        <th>content</th>
+        <th>userid</th>
+        <tr th:each = "data : ${faqpostList}">
+            <td th:text="${data.id}"></td>
+            <td>
+                <a th:text="${data.title}" th:href="@{/freepostpage/read/{id}(id=${data.id})}"></a>
+            </td>
+            <td th:text="${data.content}"></td>
+            <td th:text="${data.userid}"></td>
+        </tr>
+    </table>
 
-
+    <span th:if="${session.role.equals('ROLE_USER, ROLE_ADMIN')}">
+        <form method = "GET" action ="/faqpostpage/faqpostedit">
+            <button type = "submit">post upload</button>
+        </form>
+    </span>
 </div>
 </body>
 </html>

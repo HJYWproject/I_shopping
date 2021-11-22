@@ -8,7 +8,7 @@ public class FaqPostController {
 
     @GetMapping("/faqpostpage")
     public String faqpost(){
-        return "/post/faqpostpage";
+        return "/post/faq/faqpostpage";
     }
 
 }
