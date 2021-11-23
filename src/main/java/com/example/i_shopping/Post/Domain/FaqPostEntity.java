@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreePostEntity {
+public class FaqPostEntity {
 
     @Id
-    @Column(name = "freepost_id")
+    @Column(name = "faqpost_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -27,7 +27,7 @@ public class FreePostEntity {
     private String userid;
 
     @Builder
-    public FreePostEntity(Long id, String title, String content, String userid){
+    public FaqPostEntity(Long id, String title, String content, String userid){
         this.id = id;
         this.title = title;
         this.content = content;

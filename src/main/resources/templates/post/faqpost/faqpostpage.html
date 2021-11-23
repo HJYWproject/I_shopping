@@ -18,6 +18,7 @@
         <th>content</th>
         <th>userid</th>
         <tr th:each = "data : ${faqpostList}">
+            <!--/*@thymesVar id="data" type=""*/-->
             <td th:text="${data.id}"></td>
             <td>
                 <a th:text="${data.title}" th:href="@{/freepostpage/read/{id}(id=${data.id})}"></a>
@@ -26,12 +27,12 @@
             <td th:text="${data.userid}"></td>
         </tr>
     </table>
-
-    <span th:if="${session.role.equals('ROLE_USER, ROLE_ADMIN')}">
+    <div th:text="${session.role}"></div>
+   <!-- <span th:if="${session.role} == '[ROLE_USER, ROLE_ADMIN]' "> -->
         <form method = "GET" action ="/faqpostpage/faqpostedit">
             <button type = "submit">post upload</button>
         </form>
-    </span>
+    <!--</span> -->
 </div>
 </body>
 </html>
