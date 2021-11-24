@@ -10,7 +10,11 @@
 <div layout:fragment = "content">
   <h1>Shopping credit check page</h1> <br/>
 
-
+  <span th:if="${session.credit_check} == '0'">
+    <form method="POST" action="/shopping_credit_check">
+      <button type="submit">인증하기</button>
+    </form>
+  </span>
 
 </div>
 </body>

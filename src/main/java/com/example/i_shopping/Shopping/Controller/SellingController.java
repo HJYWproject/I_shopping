@@ -19,7 +19,7 @@ public class SellingController {
 
     @GetMapping("/shopping_credit_check")
     public String credit_checkpage(){
-        return "/shop/shopping_credit_check";
+        return "/shop/selling/shopping_credit_check";
     }
 
     @GetMapping("/shopping_sell_main")
@@ -27,7 +27,7 @@ public class SellingController {
         HttpSession session = request.getSession();
         String userid = session.getAttribute("userid").toString();
         String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
-        session.setAttribute("credit",credit_check);
+        session.setAttribute("credit_check",credit_check);
 
 
         return "/shop/selling/shopping_sell_main";
@@ -41,6 +41,18 @@ public class SellingController {
     @GetMapping("/shopping_sell_man")
     public String sell_man_page(){
         return "/shop/selling/shopping_sell_man";
+    }
+
+    @PostMapping("/shopping_credit_check")
+    public String credit_auth(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String userid = session.getAttribute("userid").toString();
+
+        accountService.credit_auth_change(userid,"1");
+        String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
+        session.setAttribute("credit_check",credit_check);
+        return "redirect:/shopping_sell_main";
+
     }
 
     @PostMapping("/shopping_sell_man")

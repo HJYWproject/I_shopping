@@ -11,10 +11,14 @@
     <h1>Shopping Sell Main Page</h1> <br/>
     <h2>팔러가기 메인 페이지</h2>
 
-    <h3>※ 물품 판매를 위해서는 신용 인증이 필요합니다!! </h3>
+    <span th:if="${session.credit_check} == '0'">
+        <form method="POST" action="/shopping_credit_check">
+            <h3>※ 물품 판매를 위해서는 신용 인증이 필요합니다!! </h3>
+            <a href = "/shopping_credit_check">신용 인증하러 가기</a> <br/>
+        </form>
+    </span>
 
-        <a href = "/shopping_credit_check">신용 인증하러 가기</a> <br/>
-    <span th:if="${session.userid}">
+    <span th:unless="${session.credit_check} == '0'">
         <a href = "/shopping_sell_man">남성 의류 판매</a> <br/>
         <a href = "/shopping_sell_woman">여성 의류 판매</a> <br/>
     </span>

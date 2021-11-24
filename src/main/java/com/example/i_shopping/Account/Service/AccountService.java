@@ -48,4 +48,10 @@ public class AccountService implements UserDetailsService {
         account.setPassword(new_encoded_password);
         accountRepository.save(account);
     }
+
+    public void credit_auth_change(String username, String credit) throws UsernameNotFoundException{
+        Account account = loadUserByUsername(username);
+        account.setCredit_check(credit);
+        accountRepository.save(account);
+    }
 }

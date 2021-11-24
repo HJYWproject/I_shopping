@@ -20,8 +20,8 @@
 
              <button type="button" onclick="location.href='/market_bascket'">장바구니</button>
              <form id="logout" action="/logout" method="POST">
-              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-              <input type="submit" value="로그아웃"/>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <input type="submit" value="로그아웃"/>
              </form>
         </div>
       </span>
