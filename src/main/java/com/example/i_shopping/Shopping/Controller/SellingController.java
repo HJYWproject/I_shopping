@@ -1,12 +1,21 @@
 package com.example.i_shopping.Shopping.Controller;
 
+import com.example.i_shopping.Account.Service.AccountService;
 import com.example.i_shopping.Shopping.Dto.SellingForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SellingController {
+    private final AccountService accountService;
+
+    public SellingController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @GetMapping("/shopping_credit_check")
     public String credit_checkpage(){
@@ -14,7 +23,13 @@ public class SellingController {
     }
 
     @GetMapping("/shopping_sell_main")
-    public String sell_mainage(){
+    public String sell_mainpage(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String userid = session.getAttribute("userid").toString();
+        String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
+        session.setAttribute("credit",credit_check);
+
+
         return "/shop/selling/shopping_sell_main";
     }
 

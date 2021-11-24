@@ -22,6 +22,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         System.out.println("Success Log In : " + authentication.getName());
         session.setAttribute("userid", authentication.getName());
         session.setAttribute("role", authentication.getAuthorities());
+
+
        // String a = accountService.loadUserByUsername(authentication.getName()).getCredit_check();
         //System.out.println(a);
 
