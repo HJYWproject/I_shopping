@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default}">
 <head>
@@ -11,7 +12,7 @@
   <h1>Shopping credit check page</h1> <br/>
 
   <span th:if="${session.credit_check} == '0'">
-    <form method="POST" action="/shopping_credit_check">
+    <form th:action="@{/shopping_credit_auth}" method="post">
       <button type="submit">인증하기</button>
     </form>
   </span>

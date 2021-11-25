@@ -24,13 +24,15 @@ public class SellingController {
 
     @GetMapping("/shopping_sell_main")
     public String sell_mainpage(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        String userid = session.getAttribute("userid").toString();
-        String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
-        session.setAttribute("credit_check",credit_check);
-
-
-        return "/shop/selling/shopping_sell_main";
+        try {
+            HttpSession session = request.getSession();
+            String userid = session.getAttribute("userid").toString();
+            String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
+            session.setAttribute("credit_check", credit_check);
+            return "/shop/selling/shopping_sell_main";
+        }catch(Exception e){
+            return "/shop/selling/shopping_sell_main";
+        }
     }
 
     @GetMapping("/shopping_sell_woman")
@@ -43,22 +45,21 @@ public class SellingController {
         return "/shop/selling/shopping_sell_man";
     }
 
-    @PostMapping("/shopping_credit_check")
-    public String credit_auth(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        String userid = session.getAttribute("userid").toString();
+    @PostMapping("/shopping_credit_auth")
+    public String credit_auth(HttpServletRequest request) {
+        try {
+            HttpSession session = request.getSession();
 
-        accountService.credit_auth_change(userid,"1");
-        String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
-        session.setAttribute("credit_check",credit_check);
-        return "redirect:/shopping_sell_main";
+            String userid = session.getAttribute("userid").toString();
 
+            accountService.credit_auth_change(userid, "1");
+            String credit_check = (accountService.loadUserByUsername(userid).getCredit_check());
+            System.out.println("신용 인증 성공");
+            session.setAttribute("credit_check", credit_check);
+            return "shop/selling/shopping_sell_main";
+        } catch (Exception e) {
+            System.out.println("신용 인증 실패");
+            return "shop/selling/shopping_sell_main";
+        }
     }
-
-    @PostMapping("/shopping_sell_man")
-    public String sell_man_post(SellingForm form) throws Exception {
-
-        return "";
-    }
-
 }
