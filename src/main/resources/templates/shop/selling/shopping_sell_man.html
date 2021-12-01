@@ -11,7 +11,20 @@
     <h1>Shopping Sell Man Page</h1> <br/>
     <h2>팔러가기 남자 옷 페이지</h2>
 
+    <form th:action="@{/shopping_sell_man}" method="post">
+        <label>제품 이미지 업로드</label><br/>
+        <input id="imageProduct" name = "imageProduct" type = "file" required><br/><br/>
 
+        <!--<label>설명 이미지 업로드</label>
+        <input id="imageContent" name = "imageContent" type = "file"> -->
+        <label>제품 제목</label><br/>
+        <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea><br/><br/>
+
+        <label>제품 설명</label><br/>
+        <textarea name="content" id="ucontent" placeholder="내용" ></textarea><br/><br/>
+
+        <button type="submit">글 작성</button>
+    </form>
 
 
 

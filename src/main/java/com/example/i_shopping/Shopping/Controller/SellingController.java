@@ -62,4 +62,10 @@ public class SellingController {
             return "shop/selling/shopping_sell_main";
         }
     }
+
+    @PostMapping("/shopping_sell_man")
+    public String sell_man_Post(){
+
+        return "/shop/selling/shopping_sell_main";
+    }
 }
