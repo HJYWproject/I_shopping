@@ -1,6 +1,7 @@
 package com.example.i_shopping.Account.Service;
 
 import com.example.i_shopping.Account.Domain.Account;
+import com.example.i_shopping.Account.Dto.AccountForm;
 import com.example.i_shopping.Account.Repository.AccountRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     // accountService;
+    AccountForm form;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,HttpServletResponse response,
                 Authentication authentication)throws IOException, ServletException {
@@ -22,11 +24,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         System.out.println("Success Log In : " + authentication.getName());
         session.setAttribute("userid", authentication.getName());
         session.setAttribute("role", authentication.getAuthorities());
-
+        session.setAttribute("credit_check","v");
 
        // String a = accountService.loadUserByUsername(authentication.getName()).getCredit_check();
         //System.out.println(a);
-
 
         //if authentication.getName() == "[ROLE_USER]"
         response.sendRedirect("/");
