@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 @Controller
 public class SellingController {
@@ -36,13 +37,23 @@ public class SellingController {
     }
 
     @GetMapping("/shopping_sell_woman")
-    public String sell_woman_page(){
-        return "/shop/selling/shopping_sell_woman";
+    public String sell_woman_page(HttpServletRequest request)throws Exception{
+        HttpSession session = request.getSession();
+        String check = session.getAttribute("credit_check").toString();
+        if (Objects.equals(check, "0"))
+            return "/shop/selling/shopping_sell_main";
+        else
+            return "/shop/selling/shopping_sell_woman";
     }
 
     @GetMapping("/shopping_sell_man")
-    public String sell_man_page(){
-        return "/shop/selling/shopping_sell_man";
+    public String sell_man_page(HttpServletRequest request)throws Exception{
+        HttpSession session = request.getSession();
+        String check = session.getAttribute("credit_check").toString();
+        if (Objects.equals(check, "0"))
+            return "/shop/selling/shopping_sell_main";
+        else
+            return "/shop/selling/shopping_sell_man";
     }
 
     @PostMapping("/shopping_credit_auth")
@@ -64,7 +75,11 @@ public class SellingController {
     }
 
     @PostMapping("/shopping_sell_man")
-    public String sell_man_Post(){
+    public String sell_man_Post(SellingForm form, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        String user = session.getAttribute("userid").toString();
+        form.setUsername(user);
+        System.out.println(form);
 
         return "/shop/selling/shopping_sell_main";
     }
