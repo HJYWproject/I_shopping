@@ -1,38 +1,37 @@
 package com.example.i_shopping.Shopping.Dto;
 
 import com.example.i_shopping.Account.Domain.Account;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
+@Getter @Setter
 public class SellingForm {
 
     private Long id;
     private String username;
-    private String password;
-    private String role;
-    private String credit_check;
-    private String phone_check;
+    private String imageProduct;
+    private String title;
+    private String content;
 
     @Builder
-    public SellingForm(Long id, String username, String password, String role, String credit_check){
+    public SellingForm(Long id, String username, String imageProduct, String title, String content){
         this.id = id;
         this.username = username;
-        this.password = "{bcrypt}"+password;
-        this.role = role;
-        this.credit_check = credit_check;
+        this.imageProduct = imageProduct;
+        this.title = title;
+        this.content = content;
     }
 
     public Account toEntity(){
         return Account.builder()
                 .id(id)
                 .username(username)
-                .password(password)     // BCryptPasswordEncoder  == 스프링 시큐리티에서 제공, 비밀번호 암호화
-                .role(role)
-                .credit_check(credit_check)
+                //.imageProduct(imageProduct)
+                //.title(title)
+                //.content(content)
                 .build();
     }
 
-}
+    }
+
