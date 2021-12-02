@@ -14,4 +14,4 @@ readme.md
 + V0.0.8(2021/11/16) : +free posting page create, read, update, delete  + free post comment
 + V0.0.8(2021/11/23) : +faq
 + V0.0.9(2021/11/25) : +selling credit check, auth
-+ V0.1.0(2021/11/00)
++ V0.1.0(2021/12/02) : +(selling) product image upload (only controller now...)
