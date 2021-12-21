@@ -41,7 +41,8 @@ public class SellingController {
         HttpSession session = request.getSession();
         String check = session.getAttribute("credit_check").toString();
         //if (Objects.equals(check, "0")) {
-        if (!Objects.equals(check, "0")) {
+        System.out.println(check);
+        if (!Objects.equals(check, "1")) {
             System.out.println("인증이 필요합니다.");
             return "/shop/selling/shopping_sell_main";
         }
@@ -53,7 +54,7 @@ public class SellingController {
     public String sell_man_page(HttpServletRequest request)throws Exception{
         HttpSession session = request.getSession();
         String check = session.getAttribute("credit_check").toString();
-        if (!Objects.equals(check, "0")) {
+        if (!Objects.equals(check, "1")) {
             System.out.println("인증이 필요합니다.");
             return "/shop/selling/shopping_sell_main";
         }
