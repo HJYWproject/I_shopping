@@ -1,6 +1,7 @@
 package com.example.i_shopping.Shopping.Dto;
 
 import com.example.i_shopping.Account.Domain.Account;
+import com.example.i_shopping.Shopping.Domain.SellingEntity;
 import lombok.*;
 
 @Data
@@ -23,13 +24,13 @@ public class SellingForm {
         this.content = content;
     }
 
-    public Account toEntity(){
-        return Account.builder()
+    public SellingEntity toEntity(){
+        return SellingEntity.builder()
                 .id(id)
                 .username(username)
-                //.imageProduct(imageProduct)
-                //.title(title)
-                //.content(content)
+                .imageProduct(imageProduct)
+                .title(title)
+                .content(content)
                 .build();
     }
 

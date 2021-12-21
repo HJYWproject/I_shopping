@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default}">
+      layout:decorate="~{layout/default}" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>shopping sell woman page</title>
@@ -11,7 +11,20 @@
     <h1>Shopping Sell Woman Page</h1> <br/>
     <h2>팔러가기 여자 옷 페이지</h2>
 
+    <form th:action="@{/shopping_sell_woman}" method="post">
+        <label>제품 이미지 업로드</label><br/>
+        <input id="imageProduct" name = "imageProduct" type = "file" required><br/><br/>
 
+        <!--<label>설명 이미지 업로드</label>
+        <input id="imageContent" name = "imageContent" type = "file"> -->
+        <label>제품 제목</label><br/>
+        <textarea name="title" id="title" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea><br/><br/>
+
+        <label>제품 설명</label><br/>
+        <textarea name="content" id="content" placeholder="내용" ></textarea><br/><br/>
+
+        <button type="submit">글 작성</button>
+    </form>
 
 
 

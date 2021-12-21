@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default}">
+      layout:decorate="~{layout/default}" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>shopping sell main page</title>
@@ -11,14 +11,14 @@
     <h1>Shopping Sell Main Page</h1> <br/>
     <h2>팔러가기 메인 페이지</h2>
 
-    <span th:if="${session.credit_check} == '0'">
+    <span th:if="${session.credit_check} != '1'">
         <form method="POST" action="/shopping_credit_check">
             <h3>※ 물품 판매를 위해서는 신용 인증이 필요합니다!! </h3>
             <a href = "/shopping_credit_check">신용 인증하러 가기</a> <br/>
         </form>
     </span>
 
-    <span th:unless="${session.credit_check} == '0'">
+    <span th:unless="${session.credit_check} != '1'">
         <a href = "/shopping_sell_man">남성 의류 판매</a> <br/>
         <a href = "/shopping_sell_woman">여성 의류 판매</a> <br/>
     </span>

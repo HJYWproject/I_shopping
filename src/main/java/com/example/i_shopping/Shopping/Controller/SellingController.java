@@ -2,6 +2,7 @@ package com.example.i_shopping.Shopping.Controller;
 
 import com.example.i_shopping.Account.Service.AccountService;
 import com.example.i_shopping.Shopping.Dto.SellingForm;
+import com.example.i_shopping.Shopping.Service.SellingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -85,8 +86,8 @@ public class SellingController {
         HttpSession session = request.getSession();
         String user = session.getAttribute("userid").toString();
         form.setUsername(user);
+        SellingService.save(form);
         System.out.println(form);
-
-        return "/shop/selling/shopping_sell_main";
+        return "shop/selling/shopping_sell_main";
     }
 }
