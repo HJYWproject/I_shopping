@@ -14,9 +14,11 @@ import java.util.Objects;
 @Controller
 public class SellingController {
     private final AccountService accountService;
+    private final SellingService sellingService;
 
-    public SellingController(AccountService accountService) {
+    public SellingController(AccountService accountService, SellingService sellingService) {
         this.accountService = accountService;
+        this.sellingService = sellingService;
     }
 
     @GetMapping("/shopping_credit_check")
@@ -86,8 +88,8 @@ public class SellingController {
         HttpSession session = request.getSession();
         String user = session.getAttribute("userid").toString();
         form.setUsername(user);
-        SellingService.save(form);
         System.out.println(form);
+        sellingService.save(form);
         return "shop/selling/shopping_sell_main";
     }
 }

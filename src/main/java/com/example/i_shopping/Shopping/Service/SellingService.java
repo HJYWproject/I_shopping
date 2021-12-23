@@ -2,17 +2,23 @@ package com.example.i_shopping.Shopping.Service;
 
 import com.example.i_shopping.Shopping.Dto.SellingForm;
 import com.example.i_shopping.Shopping.Repository.SellingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 @Service
-public class SellingService {
-    static SellingRepository sellingRepository;
+@Transactional
+public class SellingService<sellingRepository> {
+    @Autowired
+    private final SellingRepository sellingRepository;
 
-    @Transactional
-    public static Long save(SellingForm sellingForm){
-        return sellingRepository.save(sellingForm.toEntity()).getId();
+    public SellingService(SellingRepository sellingRepository) {
+        this.sellingRepository = sellingRepository;
+    }
+
+    public Long save(SellingForm form){
+            return sellingRepository.save(form.toEntity()).getId();
     }
 
 }
