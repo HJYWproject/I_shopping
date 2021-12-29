@@ -20,6 +20,9 @@ public class SellingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)         // 자동 생성 (프라이머리 키 자동 증가)
     private Long id;
 
+    @Column(name = "sex")
+    private String sex;
+
     @Column(name= "username")
     private String username;
 
@@ -34,8 +37,9 @@ public class SellingEntity {
 
 
     @Builder
-    public SellingEntity(Long id, String username, String imageProduct, String title, String content){
+    public SellingEntity(Long id, String sex, String username, String imageProduct, String title, String content){
         this.id = id;
+        this.sex = sex;
         this.username = username;
         this.imageProduct = imageProduct;
         this.title = title;

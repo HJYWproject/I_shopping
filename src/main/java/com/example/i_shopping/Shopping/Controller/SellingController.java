@@ -88,6 +88,18 @@ public class SellingController {
         HttpSession session = request.getSession();
         String user = session.getAttribute("userid").toString();
         form.setUsername(user);
+        form.setSex("m");
+        System.out.println(form);
+        sellingService.save(form);
+        return "shop/selling/shopping_sell_main";
+    }
+
+    @PostMapping("/shopping_sell_woman")
+    public String sell_woman_Post(SellingForm form, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        String user = session.getAttribute("userid").toString();
+        form.setUsername(user);
+        form.setSex("w");
         System.out.println(form);
         sellingService.save(form);
         return "shop/selling/shopping_sell_main";
