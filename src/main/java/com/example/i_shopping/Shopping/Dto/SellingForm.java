@@ -1,6 +1,5 @@
 package com.example.i_shopping.Shopping.Dto;
 
-import com.example.i_shopping.Account.Domain.Account;
 import com.example.i_shopping.Shopping.Domain.SellingEntity;
 import lombok.*;
 
