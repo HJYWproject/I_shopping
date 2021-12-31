@@ -17,4 +17,4 @@ readme.md
 + V0.1.0(2021/12/02) : +(selling) product image upload (only controller now...)
 + V0.1.1(2021/12/22) : +selling product image upload
 
-mac os checking..
+mac os check ok, jvm 17
