@@ -2,7 +2,7 @@ readme.md
 
 + I_Shopping : 누구든지 팔 수 있고, 누구든지 살 수 있는
 ***
-
+windows O, mac O, jvm17, Chrome, 
 
 + V0.0.1 : Main Layout Page + Sign Up, Sign In
 + V0.0.2(2021/10/21) : Sign In Error fix, +Admin page, +Log out 
@@ -17,4 +17,3 @@ readme.md
 + V0.1.0(2021/12/02) : +(selling) product image upload (only controller now...)
 + V0.1.1(2021/12/22) : +selling product image upload
 
-mac os check ok, jvm 17
