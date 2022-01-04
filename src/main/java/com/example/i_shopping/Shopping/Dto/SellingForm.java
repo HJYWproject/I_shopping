@@ -2,10 +2,12 @@ package com.example.i_shopping.Shopping.Dto;
 
 import com.example.i_shopping.Shopping.Domain.SellingEntity;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
 @Getter @Setter
+@Component
 public class SellingForm {
 
     private Long id;
