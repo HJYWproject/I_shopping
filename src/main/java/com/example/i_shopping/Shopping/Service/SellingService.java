@@ -25,9 +25,22 @@ public class SellingService<sellingRepository> {
     }
 
     @Transactional
-    public List<SellingEntity> getClothes(){
+    public List<SellingEntity> getClothes() throws NullPointerException{
         List<SellingEntity> selling = new ArrayList<>();
         selling.addAll(sellingRepository.findAll());
         return selling;
+    }
+
+    public List<SellingEntity> getManClothes() throws NullPointerException{
+        List<SellingEntity> m_selling = new ArrayList<>();
+        m_selling.addAll(sellingRepository.findAllMan());
+        return m_selling;
+    }
+
+    public List<SellingEntity> getWomanClothes() throws NullPointerException{
+        List<SellingEntity> w_selling = new ArrayList<>();
+        w_selling.addAll(sellingRepository.findAllWoman());
+
+        return w_selling;
     }
 }

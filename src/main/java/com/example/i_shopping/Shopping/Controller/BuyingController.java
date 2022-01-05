@@ -9,22 +9,30 @@ import java.util.List;
 
 @Controller
 public class BuyingController {
-    SellingService sellingService;
+    private final SellingService sellingService;
+
+    public BuyingController(SellingService sellingService) {
+        this.sellingService = sellingService;
+    }
+
     @GetMapping("/shopping_buy_main")
     public String buy_mainage(){
-
-
+        List<SellingForm> forms = sellingService.getClothes();
+        System.out.println(forms);
         return "/shop/buying/shopping_buy_main";
     }
 
     @GetMapping("/shopping_buy_woman")
     public String buy_woman_page(){
+        List<SellingForm> forms = sellingService.getWomanClothes();
+        System.out.println(forms);
         return "/shop/buying/shopping_buy_woman";
     }
 
     @GetMapping("/shopping_buy_man")
     public String buy_man_page(){
-        List forms = sellingService.getClothes();
+        List<SellingForm> forms = sellingService.getManClothes();
+        System.out.println(forms);
         return "/shop/buying/shopping_buy_man";
     }
 }
