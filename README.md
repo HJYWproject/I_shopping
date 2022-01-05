@@ -16,4 +16,4 @@ windows O, mac O, jvm17, Chrome,
 + V0.0.9(2021/11/25) : +selling credit check, auth
 + V0.1.0(2021/12/02) : +(selling) product image upload (only controller now...)
 + V0.1.1(2021/12/22) : +selling product image upload
-
++ V0.1.2(2022/01/05) : +get selling data
