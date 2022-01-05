@@ -29,7 +29,7 @@ public class BuyingController {
     @GetMapping("/shopping_buy_woman")
     public String buy_woman_page(Model model){
         List<SellingManForm> woman_forms = sellingService.getWomanClothes();
-        model.addAttribute("Man_Clothes", woman_forms);
+        model.addAttribute("Woman_Clothes", woman_forms);
         //System.out.println(forms);
         return "/shop/buying/shopping_buy_woman";
     }
@@ -37,7 +37,7 @@ public class BuyingController {
     @GetMapping("/shopping_buy_man")
     public String buy_man_page(Model model){
         List<SellingForm> man_forms = sellingService.getManClothes();
-        model.addAttribute("Woman_Clothes", man_forms);
+        model.addAttribute("Man_Clothes", man_forms);
         //System.out.println(forms);
         return "/shop/buying/shopping_buy_man";
     }
