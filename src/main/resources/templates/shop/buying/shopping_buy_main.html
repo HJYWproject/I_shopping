@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default}">
 <head>
@@ -11,7 +12,22 @@
     <h1>Shopping Buy Main Page</h1> <br/>
     <h2>사러가기 메인 페이지</h2>
 
+    <span th:text="${All_Clothes}"></span><br>
 
+    <table border="1">
+        <th>id</th>
+        <th>title</th>
+        <th>image</th>
+        <th>content</th>
+        <tr th:each = "data : ${All_Clothes}">
+            <td th:text="${data.id}"></td>
+            <td>
+                <a th:text="${data.title}" th:href="@{#}"></a>
+            </td>
+            <td th:text="${data.imageProduct}"></td>
+            <td th:text="${data.content}"></td>
+        </tr>
+    </table>
 
 
 

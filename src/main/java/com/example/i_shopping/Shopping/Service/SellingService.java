@@ -31,12 +31,14 @@ public class SellingService<sellingRepository> {
         return selling;
     }
 
+    @Transactional
     public List<SellingEntity> getManClothes() throws NullPointerException{
         List<SellingEntity> m_selling = new ArrayList<>();
         m_selling.addAll(sellingRepository.findAllMan());
         return m_selling;
     }
 
+    @Transactional
     public List<SellingEntity> getWomanClothes() throws NullPointerException{
         List<SellingEntity> w_selling = new ArrayList<>();
         w_selling.addAll(sellingRepository.findAllWoman());
