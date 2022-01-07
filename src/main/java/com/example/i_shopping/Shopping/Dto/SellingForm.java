@@ -16,15 +16,17 @@ public class SellingForm {
     private String imageProduct;
     private String title;
     private String content;
+    private byte[] blob_image;
 
     @Builder
-    public SellingForm(Long id, String sex, String username, String imageProduct, String title, String content){
+    public SellingForm(Long id, String sex, String username, String imageProduct, String title, String content, byte[] blob_image){
         this.id = id;
         this.sex = sex;
         this.username = username;
         this.imageProduct = imageProduct;
         this.title = title;
         this.content = content;
+        this.blob_image = blob_image;
     }
 
     public SellingEntity toEntity(){
@@ -33,6 +35,7 @@ public class SellingForm {
                 .sex(sex)
                 .username(username)
                 .imageProduct(imageProduct)
+                .blob_image(blob_image)
                 .title(title)
                 .content(content)
                 .build();

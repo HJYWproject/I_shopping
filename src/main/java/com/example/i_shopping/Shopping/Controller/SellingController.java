@@ -3,12 +3,23 @@ package com.example.i_shopping.Shopping.Controller;
 import com.example.i_shopping.Account.Service.AccountService;
 import com.example.i_shopping.Shopping.Dto.SellingForm;
 import com.example.i_shopping.Shopping.Service.SellingService;
+import org.apache.logging.log4j.util.Base64Util;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.nio.charset.StandardCharsets;
+
+import java.nio.file.Files;
+import java.sql.Blob;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 @Controller
@@ -84,11 +95,16 @@ public class SellingController {
     }
 
     @PostMapping("/shopping_sell_man")
-    public String sell_man_Post(SellingForm form, HttpServletRequest request) throws Exception{
+    public String sell_man_Post(SellingForm form, HttpServletRequest request ) throws Exception{
         HttpSession session = request.getSession();
         String user = session.getAttribute("userid").toString();
+
+        byte[] tmp = Base64Utils.decodeFromUrlSafeString(form.getImageProduct());
+        System.out.println(tmp);
+
         form.setUsername(user);
         form.setSex("m");
+
         System.out.println(form);
         sellingService.save(form);
         return "shop/selling/shopping_sell_main";

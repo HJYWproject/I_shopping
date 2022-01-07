@@ -29,6 +29,9 @@ public class SellingEntity {
     @Column(name= "imageProduct")
     private String imageProduct;
 
+    @Column(name="blob_image")
+    private byte[] blob_image;
+
     @Column(name= "title")
     private String title;
 
@@ -37,13 +40,14 @@ public class SellingEntity {
 
 
     @Builder
-    public SellingEntity(Long id, String sex, String username, String imageProduct, String title, String content){
+    public SellingEntity(Long id, String sex, String username, String imageProduct, String title, String content, byte[] blob_image){
         this.id = id;
         this.sex = sex;
         this.username = username;
         this.imageProduct = imageProduct;
         this.title = title;
         this.content = content;
+        this.blob_image = blob_image;
     }
 
 
